@@ -184,6 +184,28 @@ RSpec.describe Persons::Address, type: :model do
     end
   end
 
+  describe '.person_id' do
+    it 'has database column' do
+      should have_db_column(:person_id).of_type(:integer)
+    end
+
+    it 'has belongs_to relation' do
+      should belong_to(:person).class_name('::Person').inverse_of(:addresses).with_foreign_key(:person_id)
+    end
+
+    it 'saves new value when received' do
+      address = described_class.new(street: 'Rua Jurema',
+                                    state: "Santa Catarina",
+                                    city: "Blumenau",
+                                    postal_code: 89053300,
+                                    country: "Brasil",
+                                    person_id: person.id)
+      address.save!
+
+      expect(address.person_id).to eq person.id
+    end
+  end
+
   describe '.apply_filter' do
     it 'test by street of apply_filter' do
       result = Persons::Address.apply_filter(street: 'Rua Blumenau')
