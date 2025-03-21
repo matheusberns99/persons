@@ -47,6 +47,12 @@ Para rodar os testes automatizados, execute:
 rspec
 ```
 
+# Cobertura de testes
+
+Para verificar a cobertura de testes, acesse:
+
+http://localhost:63342/persons/coverage/index.html#_AllFiles
+
 ## Endpoints Principais
 
 - **Pessoas**
