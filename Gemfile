@@ -9,6 +9,9 @@ gem "puma", ">= 5.0"
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 # gem "jbuilder"
 
+# A lightning fast JSON:API serializer for Ruby Objects.
+gem 'active_model_serializers'
+
 # Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
 # gem "bcrypt", "~> 3.1.7"
 
@@ -38,6 +41,7 @@ gem "thruster", require: false
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri windows ], require: "debug/prelude"
+  gem "byebug"
 
   # Static analysis for security vulnerabilities [https://brakemanscanner.org/]
   gem "brakeman", require: false
@@ -45,6 +49,10 @@ group :development, :test do
   # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
   gem "rubocop-rails-omakase", require: false
 
-  # RSPEC
-  gem 'rspec', '~> 3.4'
+  # RSPEC Stack
+  gem 'rspec-rails'
+  gem 'faker'
+  gem 'factory_bot_rails'
+  gem 'shoulda-matchers'
+  gem 'simplecov'
 end

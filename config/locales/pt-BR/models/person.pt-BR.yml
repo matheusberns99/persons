@@ -1,0 +1,19 @@
+pt-BR:
+  activerecord:
+    attributes:
+      person:
+        name: Nome
+        email: E-mail
+        phone: Telefone
+        birthdate: Data de nascimento
+        active: Ativo
+        deleted_at: Deletado em
+        created_at: Criado em
+        updated_at: Editado em
+    errors:
+      models:
+        person:
+          attributes:
+            base:
+              invalid_future_date: 'Data de nascimento não pode estar no futuro'
+              invalid_email_format: 'E-mail inválido'

@@ -10,8 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 0) do
+ActiveRecord::Schema[8.0].define(version: 2025_03_20_161951) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
+  create_table "persons", force: :cascade do |t|
+    t.string "name", limit: 255, null: false
+    t.string "email", limit: 255, null: false
+    t.string "phone", limit: 255, null: false
+    t.date "birthdate", null: false
+    t.boolean "active", default: true
+    t.datetime "deleted_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["active"], name: "index_persons_on_active"
+    t.index ["birthdate"], name: "index_persons_on_birthdate"
+    t.index ["deleted_at"], name: "index_persons_on_deleted_at"
+    t.index ["email"], name: "index_persons_on_email"
+    t.index ["name"], name: "index_persons_on_name"
+    t.index ["phone"], name: "index_persons_on_phone"
+  end
 end
