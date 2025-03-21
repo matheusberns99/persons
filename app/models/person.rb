@@ -2,7 +2,7 @@ class Person < ApplicationRecord
   self.table_name = "persons"
 
   # Has_many associations
-  # has_many :person_addresses, class_name: "::PersonAddresses", inverse_of: :person, foreign_key: :person_id
+  has_many :addresses, class_name: "::Persons::Address", inverse_of: :person, foreign_key: :person_id
 
   # Scopes
   scope :by_active, lambda { |active|

@@ -1,4 +1,4 @@
 pt-BR:
   errors:
     messages:
-      headquarter_cnpj_not_found: Não foi possível encontrar uma unidade com esse CNPJ
+      register_not_found: Registro não encontrado

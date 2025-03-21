@@ -7,7 +7,9 @@ RSpec.describe Persons::ShowSerializer do
            email: 'email@valido.com',
            phone: '123456789',
            birthdate: '1999-01-01',
-           active: true)
+           active: true,
+           created_at: Time.current.iso8601,
+           updated_at: Time.current.iso8601)
   end
 
   subject(:serialized_person) do
@@ -47,6 +49,18 @@ RSpec.describe Persons::ShowSerializer do
   describe 'active' do
     it 'returns the correct value' do
       expect(serialized_person[:active]).to be person.active
+    end
+  end
+
+  describe 'created_at' do
+    it 'returns the correct value' do
+      expect(serialized_person[:created_at].to_s).to eq person.created_at.iso8601
+    end
+  end
+
+  describe 'updated_at' do
+    it 'returns the correct value' do
+      expect(serialized_person[:updated_at].to_s).to eq person.updated_at.iso8601
     end
   end
 end

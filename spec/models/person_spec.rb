@@ -112,6 +112,24 @@ RSpec.describe Person, type: :model do
     end
   end
 
+  describe '.phone' do
+    it 'has database column' do
+      should have_db_column(:phone).of_type(:string)
+    end
+
+    it { should validate_presence_of(:phone) }
+
+    it 'saves new value when received' do
+      person = described_class.new(name: 'Joao Kleber',
+                                   email: "email@valido.com",
+                                   phone: "47992853824",
+                                   birthdate: Date.yesterday)
+      person.save!
+
+      expect(person.phone).to eq '47992853824'
+    end
+  end
+
   describe '.email' do
     it 'has database column' do
       should have_db_column(:email).of_type(:string)
@@ -127,13 +145,6 @@ RSpec.describe Person, type: :model do
       person.save!
 
       expect(person.email).to eq 'email@valido.com'
-    end
-  end
-
-  describe '.name' do
-    it 'filters by name' do
-      result = Person.apply_filter(name: 'Joao da silva')
-      expect(result).to include(person)
     end
   end
 
@@ -156,6 +167,13 @@ RSpec.describe Person, type: :model do
 
         expect(person.errors.full_messages).to be_empty
       end
+    end
+  end
+
+  describe '.apply_filter' do
+    it 'test the by_name of apply_filter' do
+      result = Person.apply_filter(name: 'Joao da silva')
+      expect(result).to include(person)
     end
   end
 end

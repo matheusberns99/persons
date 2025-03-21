@@ -63,6 +63,11 @@ RSpec.describe PersonsController, type: :controller do
       expect(person.deleted_at).not_to be_nil
       expect(response).to have_http_status(:ok)
     end
+
+    it 'not found a record to destroy the person' do
+      put :destroy, params: { id: 99999 }
+      expect(response).to have_http_status(:not_found)
+    end
   end
 
   describe 'PUT #recover' do
@@ -74,6 +79,11 @@ RSpec.describe PersonsController, type: :controller do
       expect(person.active).to be_truthy
       expect(person.deleted_at).to be_nil
       expect(response).to have_http_status(:ok)
+    end
+
+    it 'not found a record to destroy the person' do
+      put :recover, params: { id: 99999 }
+      expect(response).to have_http_status(:not_found)
     end
   end
 end

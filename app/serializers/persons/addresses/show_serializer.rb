@@ -1,10 +1,11 @@
-module Persons
+module Persons::Addresses
   class ShowSerializer < ActiveModel::Serializer
     attributes :id,
-               :name,
-               :email,
-               :phone,
-               :birthdate,
+               :street,
+               :city,
+               :state,
+               :country,
+               :postal_code,
                :active,
                :created_at,
                :updated_at

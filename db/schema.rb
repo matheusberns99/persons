@@ -10,9 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_03_20_161951) do
+ActiveRecord::Schema[8.0].define(version: 2025_03_21_001905) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
+
+  create_table "person_addresses", force: :cascade do |t|
+    t.string "street", limit: 255, null: false
+    t.string "city", limit: 255, null: false
+    t.string "state", limit: 255, null: false
+    t.integer "postal_code", null: false
+    t.string "country", limit: 255, null: false
+    t.bigint "person_id", null: false
+    t.boolean "active", default: true
+    t.datetime "deleted_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["active"], name: "index_person_addresses_on_active"
+    t.index ["deleted_at"], name: "index_person_addresses_on_deleted_at"
+    t.index ["person_id"], name: "index_person_addresses_on_person_id"
+  end
 
   create_table "persons", force: :cascade do |t|
     t.string "name", limit: 255, null: false
@@ -30,4 +46,6 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_20_161951) do
     t.index ["name"], name: "index_persons_on_name"
     t.index ["phone"], name: "index_persons_on_phone"
   end
+
+  add_foreign_key "person_addresses", "persons"
 end

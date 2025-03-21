@@ -31,20 +31,24 @@ class PersonsController < ApplicationController
   end
 
   def destroy
-    if @person.update(active: false, deleted_at: Time.current)
+    if @person
+      @person.update(active: false, deleted_at: Time.current)
+
       render json: {}, status: :ok
     else
-      render json: { errors: @person.errors.full_messages }, status: :unprocessable_entity
+      render json: { errors: I18n.t("errors.messages.register_not_found") }, status: :not_found
     end
   end
 
   def recover
-    person = Person.where(active: false).find(params[:id])
+    person = Person.where(active: false).find_by(id: params[:id])
 
-    if person.update(active: true, deleted_at: nil)
+    if person
+      person.update(active: true, deleted_at: nil)
+
       render_json(person, Persons::ShowSerializer, 'person', :ok)
     else
-      render json: { errors: person.errors.full_messages }, status: :unprocessable_entity
+      render json: { errors: I18n.t("errors.messages.register_not_found") }, status: :not_found
     end
   end
 

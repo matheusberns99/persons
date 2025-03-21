@@ -1,8 +1,11 @@
 Rails.application.routes.draw do
   get "up" => "rails/health#show", as: :rails_health_check
 
-  match 'persons/:id/recover' => 'persons#recover', via: :patch
-  resources :persons, only: %i[index show create update destroy] do
+  concern :recoverable do
+    patch "recover", on: :member
+  end
 
+  resources :persons, only: %i[index show create update destroy], concerns: :recoverable do
+    resources :addresses, only: %i[index show create update destroy], controller: "persons/addresses", concerns: :recoverable
   end
 end
