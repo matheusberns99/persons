@@ -1,0 +1,13 @@
+pt-BR:
+  activerecord:
+    attributes:
+      address:
+        street: Rua
+        city: Cidade
+        state: Estado
+        country: País
+        postal_code: CEP
+        active: Ativo
+        deleted_at: Deletado em
+        created_at: Criado em
+        updated_at: Editado em
