@@ -1,24 +1,66 @@
-# README
+# CRUD de Pessoas e Endereços
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# Postmann
+Por ser um projeto API-Only, abaixo está o link da coleção do Postman:
+https://drive.google.com/file/d/1oRowTgdCRKQPtLvlC4qzC-okP9_vw8RS/view?usp=drive_link
 
-Things you may want to cover:
+## Tecnologias Utilizadas
 
-* Ruby version
+- Ruby on Rails
+- PostgreSQL
+- RSpec
 
-* System dependencies
+## Instalação e Configuração
 
-* Configuration
+1. Clone o repositório:
 
-* Database creation
+   ```sh
+   git clone https://github.com/matheusberns99/persons.git
+   cd persons
+   ```
 
-* Database initialization
+2. Instale as dependências:
 
-* How to run the test suite
+   ```sh
+   bundle install
+   ```
 
-* Services (job queues, cache servers, search engines, etc.)
+3. Configure o banco de dados:
 
-* Deployment instructions
+   ```sh
+   rails db:create db:migrate
+   ```
 
-* ...
+4. Inicie o servidor:
+
+   ```sh
+   rails server
+   ```
+
+O servidor estará disponível em `http://localhost:3000` ou `127.0.0.1:3000`.
+
+## Executando os Testes
+
+Para rodar os testes automatizados, execute:
+
+```sh
+rspec
+```
+
+## Endpoints Principais
+
+- **Pessoas**
+    - `GET /persons` – Lista todas as pessoas
+    - `POST /persons` – Cria uma nova pessoa
+    - `GET /persons/:id` – Obtém os detalhes de uma pessoa
+    - `PUT/PATCH /persons/:id` – Atualiza uma pessoa
+    - `DELETE /persons/:id` – Inativa uma pessoa
+    - `PUT/PATCH /persons/:id/recover` – Reativa uma pessoa
+
+- **Endereços**
+    - `GET /persons/:person_id/addresses` – Lista os endereços de uma pessoa
+    - `POST /persons/:person_id/addresses` – Cria um novo endereço
+    - `GET /persons/:person_id/addresses/:id` – Obtém os detalhes de um endereço
+    - `PUT/PATCH /persons/:person_id/addresses/:id` – Atualiza um endereço
+    - `DELETE /persons/:person_id/addresses/:id` – Inativa um endereço
+    - `PUT/PATCH /persons/:person_id/addresses/:id/recover` – Reativa um endereço
