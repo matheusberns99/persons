@@ -1,6 +1,9 @@
 class Persons::Address < ApplicationRecord
   self.table_name = "person_addresses"
 
+  # Concerns
+  include Filterable
+
   # Belongs_to associations
   belongs_to :person, class_name: "::Person", inverse_of: :addresses, foreign_key: :person_id
 
@@ -11,19 +14,19 @@ class Persons::Address < ApplicationRecord
     where(active: active_boolean)
   }
   scope :by_street, lambda { |street|
-    where("#{table_name}.street ILIKE :street", street: "%#{I18n.transliterate(street.strip)}%")
+    where("UNACCENT(#{table_name}.street) ILIKE :street", street: "%#{I18n.transliterate(street.strip)}%")
   }
   scope :by_city, lambda { |city|
-    where("#{table_name}.city ILIKE :city", city: "%#{I18n.transliterate(city.strip)}%")
+    where("UNACCENT(#{table_name}.city) ILIKE :city", city: "%#{I18n.transliterate(city.strip)}%")
   }
   scope :by_state, lambda { |state|
-    where("#{table_name}.state ILIKE :state", state: "%#{I18n.transliterate(state.strip)}%")
+    where("UNACCENT(#{table_name}.state) ILIKE :state", state: "%#{I18n.transliterate(state.strip)}%")
   }
   scope :by_postal_code, lambda { |postal_code|
     where(postal_code: postal_code)
   }
   scope :by_country, lambda { |country|
-    where("#{table_name}.country ILIKE :country", country: "%#{I18n.transliterate(country.strip)}%")
+    where("UNACCENT(#{table_name}.country) ILIKE :country", country: "%#{I18n.transliterate(country.strip)}%")
   }
 
   # Validations

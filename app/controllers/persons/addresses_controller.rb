@@ -56,6 +56,10 @@ class Persons::AddressesController < ::Persons::BaseController
 
   def set_address
     @address = @person.addresses.find_by(id: params[:id])
+
+    return if @address
+
+    record_not_found
   end
 
   def address_params

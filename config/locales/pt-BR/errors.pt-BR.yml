@@ -2,3 +2,4 @@ pt-BR:
   errors:
     messages:
       register_not_found: Registro não encontrado
+      not_authorized: Não autorizado. Faça login para acessar este recurso

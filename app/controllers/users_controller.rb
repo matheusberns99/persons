@@ -44,6 +44,10 @@ class UsersController < ApplicationController
 
   def set_user
     @user = User.find_by(id: params[:id])
+
+    return if @user
+
+    record_not_found
   end
 
   def user_params

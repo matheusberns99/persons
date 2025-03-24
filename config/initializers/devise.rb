@@ -30,4 +30,6 @@ Devise.setup do |config|
   config.jwt do |jwt|
     jwt.secret = Rails.application.credentials.secret_key_base
   end
+
+  config.navigational_formats = []
 end

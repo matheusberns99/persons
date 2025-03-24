@@ -18,7 +18,11 @@ class ApplicationController < ActionController::API
 
   def authenticate_user!
     unless user_signed_in?
-      render json: { error: "Não autorizado. Faça login para acessar este recurso." }, status: :unauthorized
+      render json: { error: I18n.t("errors.messages.not_authorized") }, status: :unauthorized
     end
+  end
+
+  def record_not_found
+    render json: { errors: I18n.t("errors.messages.register_not_found") }, status: :not_found
   end
 end

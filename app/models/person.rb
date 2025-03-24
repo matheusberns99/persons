@@ -1,6 +1,9 @@
 class Person < ApplicationRecord
   self.table_name = "persons"
 
+  # Concerns
+  include Filterable
+
   # Has_many associations
   has_many :addresses, class_name: "::Persons::Address", inverse_of: :person, foreign_key: :person_id
 
@@ -11,10 +14,10 @@ class Person < ApplicationRecord
     where(active: active_boolean)
   }
   scope :by_name, lambda { |name|
-    where("#{table_name}.name ILIKE :name", name: "%#{I18n.transliterate(name.strip)}%")
+    where("UNACCENT(#{table_name}.name) ILIKE :name", name: "%#{I18n.transliterate(name.strip)}%")
   }
   scope :by_email, lambda { |email|
-    where("#{table_name}.email ILIKE :email", email: "%#{I18n.transliterate(email.strip)}%")
+    where("UNACCENT(#{table_name}.email) ILIKE :email", email: "%#{I18n.transliterate(email.strip)}%")
   }
   scope :by_phone, lambda { |phone|
     where("#{table_name}.phone ILIKE :phone", phone: "%#{I18n.transliterate(phone.strip)}%")
@@ -44,19 +47,6 @@ class Person < ApplicationRecord
     on: %i[create update] }
 
   validate :birthdate_cannot_be_in_the_future, on: %i[create update]
-
-  def self.apply_filter(params)
-    persons = all
-
-    persons = persons.by_name(params[:name]) if params[:name]
-    persons = persons.by_active(params[:active]) if params[:active]
-    persons = persons.by_email(params[:email]) if params[:email]
-    persons = persons.by_phone(params[:phone]) if params[:phone]
-    persons = persons.by_birthdate(params[:birthdate_start_date],
-                                   params[:birthdate_end_date]) if params[:birthdate_start_date] || params[:birthdate_end_date]
-
-    persons
-  end
 
   private
 

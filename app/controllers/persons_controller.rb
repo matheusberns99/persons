@@ -57,6 +57,10 @@ class PersonsController < ApplicationController
 
   def set_person
     @person = Person.find_by(id: params[:id])
+
+    return if @person
+
+    record_not_found
   end
 
   def person_params
