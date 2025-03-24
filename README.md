@@ -83,3 +83,7 @@ http://localhost:63342/persons/coverage/index.html#_AllFiles
     - `GET /users/:id` – Obtém os detalhes de um usuário
     - `PUT/PATCH /users/:id` – Atualiza um usuário
     - `DELETE /users/:id` – Exclui um usuário
+  
+- **Sessão**
+    - `POST /users/sign_in` – Criar uma nova sessão de usuário
+    - `DELETE /users/sign_out` – Deslogar de sessão atual
