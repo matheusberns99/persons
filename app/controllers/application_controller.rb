@@ -15,4 +15,10 @@ class ApplicationController < ActionController::API
 
     render json: returned_json, status: status
   end
+
+  def authenticate_user!
+    unless user_signed_in?
+      render json: { error: "Não autorizado. Faça login para acessar este recurso." }, status: :unauthorized
+    end
+  end
 end

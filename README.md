@@ -44,7 +44,7 @@ O servidor estará disponível em `http://localhost:3000` ou `127.0.0.1:3000`.
 Para rodar os testes automatizados, execute:
 
 ```sh
-rspec
+  rspec
 ```
 
 # Cobertura de testes

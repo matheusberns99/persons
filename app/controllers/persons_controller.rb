@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 class PersonsController < ApplicationController
   before_action :set_person, only: %i[show update destroy recover]
+  before_action :authenticate_user!
 
   def index
     persons = Person.apply_filter(filter_params)

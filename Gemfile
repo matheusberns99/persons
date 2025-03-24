@@ -12,6 +12,9 @@ gem "puma", ">= 5.0"
 # A lightning fast JSON:API serializer for Ruby Objects.
 gem 'active_model_serializers'
 
+gem 'devise'
+gem 'devise-jwt'
+
 # Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
 # gem "bcrypt", "~> 3.1.7"
 
