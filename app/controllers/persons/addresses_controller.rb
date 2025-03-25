@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 class Persons::AddressesController < ::Persons::BaseController
   before_action :set_address, only: %i[show update destroy recover]
   before_action :authenticate_user!

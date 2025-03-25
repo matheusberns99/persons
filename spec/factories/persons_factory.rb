@@ -1,6 +1,5 @@
 FactoryBot.define do
   factory :person, class: ::Person do
-
     name { Faker::Name.name }
     email { "email@valido.com" }
     phone { "47992853825" }

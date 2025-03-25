@@ -1,11 +1,11 @@
 Rails.application.routes.draw do
   get "up" => "rails/health#show", as: :rails_health_check
 
-  devise_for :users, controllers: { sessions: 'users/sessions' }, skip: :all
+  devise_for :users, controllers: { sessions: "users/sessions" }, skip: :all
 
   devise_scope :user do
-    post 'users/sign_in', to: 'users/sessions#create'
-    delete 'users/sign_out', to: 'users/sessions#destroy'
+    post "users/sign_in", to: "users/sessions#create"
+    delete "users/sign_out", to: "users/sessions#destroy"
   end
 
   concern :recoverable do

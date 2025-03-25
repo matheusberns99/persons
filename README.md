@@ -15,8 +15,8 @@ https://drive.google.com/file/d/1sWg4XpL_5BjMSWqdDzqnBZCl4zwkKRuZ/view?usp=drive
 1. Clone o repositório:
 
    ```sh
-   git clone https://github.com/matheusberns99/persons.git
-   cd persons
+   git clone https://github.com/matheusberns99/people.git
+   cd people
    ```
 
 2. Instale as dependências:
@@ -57,7 +57,7 @@ Para rodar os testes automatizados, execute:
 
 Para verificar a cobertura de testes, acesse:
 
-http://localhost:63342/persons/coverage/index.html#_AllFiles
+http://localhost:63342/people/coverage/index.html#_AllFiles
 
 ## Endpoints Principais
 

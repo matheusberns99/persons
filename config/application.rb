@@ -33,6 +33,6 @@ module Persons
 
     config.session_store :disabled
     config.middleware.use ActionDispatch::Cookies
-    config.middleware.use ActionDispatch::Session::CookieStore, key: 'persons_api_session'
+    config.middleware.use ActionDispatch::Session::CookieStore, key: "persons_api_session"
   end
 end

@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 class UsersController < ApplicationController
   before_action :set_user, only: %i[show update destroy]
   before_action :authenticate_user!
@@ -6,18 +7,18 @@ class UsersController < ApplicationController
   def index
     users = User.apply_filter(filter_params)
 
-    render_json(users, Users::IndexSerializer, 'users', :ok)
+    render_json(users, Users::IndexSerializer, "users", :ok)
   end
 
   def show
-    render_json(@user, Users::ShowSerializer, 'user', :ok)
+    render_json(@user, Users::ShowSerializer, "user", :ok)
   end
 
   def create
     user = User.new(user_params)
 
     if user.save
-      render_json(user, Users::ShowSerializer, 'user', :created)
+      render_json(user, Users::ShowSerializer, "user", :created)
     else
       render json: { errors: user.errors.full_messages }, status: :unprocessable_entity
     end
@@ -25,7 +26,7 @@ class UsersController < ApplicationController
 
   def update
     if @user.update(user_params)
-      render_json(@user, Users::ShowSerializer, 'user', :ok)
+      render_json(@user, Users::ShowSerializer, "user", :ok)
     else
       render json: { errors: @user.errors.full_messages }, status: :unprocessable_entity
     end

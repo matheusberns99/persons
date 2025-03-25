@@ -10,10 +10,10 @@ gem "puma", ">= 5.0"
 # gem "jbuilder"
 
 # A lightning fast JSON:API serializer for Ruby Objects.
-gem 'active_model_serializers'
+gem "active_model_serializers"
 
-gem 'devise'
-gem 'devise-jwt'
+gem "devise"
+gem "devise-jwt"
 
 # Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
 # gem "bcrypt", "~> 3.1.7"
@@ -53,9 +53,9 @@ group :development, :test do
   gem "rubocop-rails-omakase", require: false
 
   # RSPEC Stack
-  gem 'rspec-rails'
-  gem 'faker'
-  gem 'factory_bot_rails'
-  gem 'shoulda-matchers'
-  gem 'simplecov'
+  gem "rspec-rails"
+  gem "faker"
+  gem "factory_bot_rails"
+  gem "shoulda-matchers"
+  gem "simplecov"
 end
