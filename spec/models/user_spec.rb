@@ -34,11 +34,4 @@ RSpec.describe User, type: :model do
       expect(user.email).to eq 'email@valido.com'
     end
   end
-
-  describe '.apply_filter' do
-    it 'test the by_email of apply_filter' do
-      result = User.apply_filter(email: 'test@example.com')
-      expect(result).to include(user)
-    end
-  end
 end

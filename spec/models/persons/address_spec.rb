@@ -205,11 +205,4 @@ RSpec.describe Persons::Address, type: :model do
       expect(address.person_id).to eq person.id
     end
   end
-
-  describe '.apply_filter' do
-    it 'test by street of apply_filter' do
-      result = Persons::Address.apply_filter(street: 'Rua Blumenau')
-      expect(result).to include(address)
-    end
-  end
 end

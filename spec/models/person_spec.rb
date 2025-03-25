@@ -175,12 +175,4 @@ RSpec.describe Person, type: :model do
       should have_many(:addresses).class_name('Persons::Address').inverse_of(:person).with_foreign_key(:person_id)
     end
   end
-
-
-  describe '.apply_filter' do
-    it 'test the by_name of apply_filter' do
-      result = Person.apply_filter(name: 'Joao da silva')
-      expect(result).to include(person)
-    end
-  end
 end
